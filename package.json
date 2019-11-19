@@ -1,0 +1,15 @@
+{
+  "name": "mypdf",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "json-2-csv": "^3.5.7",
+    "pdf2json": "^1.1.8"
+  }
+}
