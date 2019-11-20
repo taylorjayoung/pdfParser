@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "convert-array-to-csv": "^1.0.9",
     "json-2-csv": "^3.5.7",
     "pdf2json": "^1.1.8"
   }

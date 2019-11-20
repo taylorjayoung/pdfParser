@@ -6,45 +6,27 @@ module.exports = {
   
 }
 
-function getInvNumAndDates (body){
+function getInvNumAndDates (body, i){
     let dates
     let inNum
     
-    if(!body) return
+    if(!body) return ['error', i]
 
-    for(let i = 0; i < 22; i++){
-      if(body[i]["R"][0]["T"].includes('Invoice%23')){}
+    //find "Invoice #"
+    let invIdx = body.findIndex( obj => obj["R"][0]["T"] === 'Invoice%23')
+    let adjInvIdx = invIdx + 4
+    invIdx = body[adjInvIdx]["R"][0]["T"]
 
-      if(i === 18){
-        //invoice number
-        inNum = body[i]["R"][0]["T"]
-      }
-      if(i === 21){
-        //flight dates
-        dates = body[i]["R"][0]["T"]
-      }
-  
-    }
-    return {inNum: inNum, dates: dates}
+    //find Flight
+    let flightIdx = body.findIndex( obj => obj["R"][0]["T"] === 'Flight' )
+    let adjFlightIdx = flightIdx + 4
+    flightIdx = body[adjFlightIdx]["R"][0]["T"]
+
+
+    //RegEx invoice and flights 
+    //Error check
+    console.log(invIdx, flightIdx)
+    return [invIdx, flightIdx]
     // console.log(util.inspect(json["formImage"]["Pages"][0]["Texts"], {showHidden: false, depth: null})) (body){
-  let flightDates
-  let invNum
-  
-  if(!body) return
 
-  for(let i = 0; i < 22; i++){
-    if(body[i]["R"][0]["T"].includes('Invoice%23')){}
-
-    if(i === 18){
-      //invoice number
-      invNum = body[i]["R"][0]["T"]
-    }
-    if(i === 21){
-      //flight dates
-      flightDates = body[i]["R"][0]["T"]
-    }
-
-  }
-  return {invNum: invNum, flightDates: flightDates}
-  // console.log(util.inspect(json["formImage"]["Pages"][0]["Texts"], {showHidden: false, depth: null}))
 }
