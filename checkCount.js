@@ -3,7 +3,7 @@ let fs = require('fs')
 fs.readdir('./json', function(err, items) {
   console.log('json count: ', items.length)
 })
-fs.readdir('./pdfs/Feb', function(err, items) {
+fs.readdir('./pdfs', function(err, items) {
   console.log('pdf count: ', items.length)
 })
 fs.readdir('./csv', function(err, items) {

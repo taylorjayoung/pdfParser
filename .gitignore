@@ -1,4 +1,4 @@
-pdfs
-json
-csv
 node_modules
+pdfs/*
+json/*
+csv/*

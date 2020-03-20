@@ -3,16 +3,14 @@
 
 module.exports = {
   getInvNumAndDates: getInvNumAndDates
-  
+
 }
 
 function getInvNumAndDates (body, i, title){
     let dates
     let inNum
- 
-    if(!body) return ['error', i]
 
-    //exception handling
+    if(!body) return ['error', i]
 
 
     //find "Invoice #"
@@ -32,18 +30,16 @@ function getInvNumAndDates (body, i, title){
     if(validInv(invIdx) && validDate(flightIdx)){
       return [invIdx, flightIdx, title]
     } else return ['unexpected values', i, title]
-  
 
 
-    // console.log(util.inspect(json["formImage"]["Pages"][0]["Texts"], {showHidden: false, depth: null})) (body){
 
 }
 
 function validInv(inv){
-  const version = inv.slice(-2) 
+  const version = inv.slice(-2)
     //RegEx invoice
-      //Invoice format: 1935634-2 
-      //Last two digits should always be 'dash something' 
+      //Invoice format: 1935634-2
+      //Last two digits should always be 'dash something'
   return(version[0] === '-' && typeof(parseInt(version[1])) === 'number')
 }
 
@@ -55,4 +51,3 @@ function validDate(date){
   return (dates && (dates[0].split('%').length === 3 && dates[1].split('%').length === 3))
 
 }
-
