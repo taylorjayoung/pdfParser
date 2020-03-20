@@ -1,0 +1,35 @@
+PDF Parser by Taylor Young
+
+This is a node application that is used for converting information in PDFs to CSV.
+
+It is currently set for our team's specific invoicing needs, but can easily be amended to find information in any PDF.
+
+In order to run locally, follow these steps:
+
+1. Clone the repository
+
+2. Make sure all of the individual PDFs that you want to convert are in the /pdfs directory of this project.
+
+3. Make sure both the /csv and the /json directories are empty.
+
+4. Make sure node is installed by running node -v
+  -if not, install it here https://nodejs.org/en/download/
+
+5. run 'node checkCount.js'
+  -make sure this outputs the correct number of pdfs
+
+6. run 'node readPdfDirectory.js'
+  -this reads the /pdfs directory and iterates through each pdf
+  -for each pdf it utilizes the PDFParser library from 'pdf2json' (https://www.npmjs.com/package/pdf2json)
+  -then it uses Node's 'fs' library to write to the /json directory the newly created json files
+
+7. run 'node checkCount.js'
+  -make sure the /json directory now contains the same number of files as the /pdfs directory
+
+8. run 'node transformJSON.js'
+  -this iterates through the /json directory
+  -for each json file, the content is passed to the findData function, which finds all of our relevant data
+    -findData is the function you would alter if you were ever to need to customize the information you need from the PDF files/ json data
+  -then the data from each json file is added to an array called csvData
+  -csvData is passed to the createCSV function which utilizes the npm package 'convert-array-to-csv' and writes the csv to the /csv directory
+9. Open the CSV and do your manual double checking 
