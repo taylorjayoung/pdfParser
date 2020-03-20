@@ -25,8 +25,7 @@ function getInvNumAndDates (body, i, title){
     flightIdx = body[adjFlightIdx]["R"][0]["T"]
 
 
-          //Error check
-
+    //Error check
     if(validInv(invIdx) && validDate(flightIdx)){
       return [invIdx, flightIdx, title]
     } else return ['unexpected values', i, title]

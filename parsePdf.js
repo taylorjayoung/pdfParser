@@ -11,8 +11,8 @@ function parsePDF(fileExt){
       if(err) console.log('error', err);
     });
   });
-  pdfParser.loadPDF(filename);
 
+  pdfParser.loadPDF(filename);
 }
 
 

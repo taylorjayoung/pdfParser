@@ -7,7 +7,7 @@ function createCSV(data){
   const csvFromArrayOfArrays = convertArrayToCSV(data, {
     header,
     separator: ','
-  });
+  })
 
   fs.writeFile('./csv/csvResult.csv', csvFromArrayOfArrays, (err) => {
     if (err) throw err;
